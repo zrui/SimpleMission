@@ -3,14 +3,13 @@
 ini_set('display_errors',1);
 error_reporting(E_ALL);
 
-require_once 'login.php';
+require_once 'conn.php';
 
-echo "load login";
-$db_server = mysql_connect($db_hostname, $db_username, $db_password);
+$target_server = mysql_connect($target_host, $db_username, $db_password);
 
-if (!$db_server) die("failed to connect mysql: " . mysql_error() );
+if (!$target_server) die("failed to connect mysql: " . mysql_error() );
 
-mysql_select_db($db_database) or die("unable to select database:" . mysql_error() );
+mysql_select_db($target_db) or die("unable to select database:" . mysql_error() );
 
 $query = "SELECT * FROM target";
 $result = mysql_query($query);
