@@ -19,10 +19,11 @@ if (!$result) die("Database access failed: " . mysql_error() );
 echo "<table align='center'><tr> <th>id</th> <th>name</th></tr>";
 
 $rows = mysql_num_rows($result);
+$colum = mysql_num_fields($result);
 for($i = 0; $i < $rows; ++$i)
 {
   $row = mysql_fetch_row($result);
-  $colum = mysql_num_fields($row);
+
   echo "<tr>";
   for($j = 0; $j < $colum; $j++)
   {
