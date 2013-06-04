@@ -16,9 +16,18 @@ $result = mysql_query($query);
 
 if (!$result) die("Database access failed: " . mysql_error() );
 
-$rows = mysql_num_rows($result);
-echo $rows;
-echo "<table><tr> <th>id</th> <th>name</th> </tr>";
+echo "<table align='center'><tr> <th>id</th> <th>name</th></tr>";
+for($i = 0; $i < $rows; ++$i)
+{
+  $row = mysql_fetch_row($result);
+  $colum = mysql_num_fields($row);
+  echo "<tr>";
+  for($j = 0; $j < $colum; $j++)
+  {
+    echo "<td>$row[$j]</td>";
+  }
+  echo "</tr>";
+} 
 echo "</table>";
 
 ?>

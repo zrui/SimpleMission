@@ -11,15 +11,23 @@ if (!$target_server) die("failed to connect mysql: " . mysql_error() );
 
 mysql_select_db($target_db) or die("unable to select database:" . mysql_error() );
 
-$query = "SELECT * FROM target";
+$query = "SELECT * FROM $target_db";
 $result = mysql_query($query);
 
 if (!$result) die("Database access failed: " . mysql_error() );
 
-$rows = mysql_num_rows($result);
-echo $rows;
-echo "<table><tr> <th>id</th> <th>name</th> <th>xloc</th> <th>yloc</th></tr>";
-
+echo "<table align='center'><tr> <th>id</th> <th>name</th></tr>";
+for($i = 0; $i < $rows; ++$i)
+{
+  $row = mysql_fetch_row($result);
+  $colum = mysql_num_fields($row);
+  echo "<tr>";
+  for($j = 0; $j < $colum; $j++)
+  {
+    echo "<td>$row[$j]</td>";
+  }
+  echo "</tr>";
+} 
 echo "</table>";
 
 ?>
