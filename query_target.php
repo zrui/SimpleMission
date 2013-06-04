@@ -17,6 +17,8 @@ $result = mysql_query($query);
 if (!$result) die("Database access failed: " . mysql_error() );
 
 echo "<table align='center'><tr> <th>id</th> <th>name</th></tr>";
+
+$rows = mysql_num_rows($result);
 for($i = 0; $i < $rows; ++$i)
 {
   $row = mysql_fetch_row($result);
