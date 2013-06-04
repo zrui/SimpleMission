@@ -15,7 +15,6 @@ $query = "SELECT * FROM $target_db";
 $result = mysql_query($query);
 
 if (!$result) die("Database access failed: " . mysql_error() );
-
 echo "<table align='center'><tr> <th>id</th> <th>name</th></tr>";
 
 $rows = mysql_num_rows($result);

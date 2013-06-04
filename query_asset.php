@@ -15,6 +15,7 @@ $query = "SELECT * FROM $asset_db";
 $result = mysql_query($query);
 
 if (!$result) die("Database access failed: " . mysql_error() );
+echo "<table align='center'><tr> <th>id</th> <th>name</th></tr>";
 
 $rows = mysql_num_rows($result);
 $colum = mysql_num_fields($result);
