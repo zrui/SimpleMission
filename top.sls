@@ -2,3 +2,4 @@ base:
   '*':
     - webserver
     - java
+    - maven

@@ -1,12 +1,17 @@
-install_java:
-  pkg.installed:
-    - name: oracle-java8-installer
-    - require:
-      - pkgrepo: java_repo
-
-
 java_repo:
   pkgrepo.managed:
-    - humanname: Oracle Java PPA
-    - name: ppa:webupd8team/java
+    - ppa: webupd8team/java
+    - require_in: install_java
+
+install_java:
+  pkg.latest:
+    - name: oracle-java8-installer
+
+oracle-java-license-autoaccept:
+  debconf.set:
+    - data:
+        'shared/accepted-oracle-license-v1-1': {'type': 'boolean', 'value':True}
+    - require_in:
+      - pkg: install_java
+
     
