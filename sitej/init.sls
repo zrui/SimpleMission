@@ -13,16 +13,15 @@ sitej:
   git.latest:
     - name: https://github.com/zrui/Moova-j.git
     - rev: master
-    - target: /root
+    - target: /root/Moova-j
     - require:
       - pkg: git
       - ssh_known_hosts: github.com
 
 runsite:
   cmd.run:
-    - unless: which mvn
     - name: |
-        cd ~/Moova-j
-        mvn compile exec:java -Dexec.mainClass="com.zeerui.App"
+        mvn compile exec:java -Dexec.mainClass="com.zeerui.App" &
+    - cwd: /root/Moova-j
     - require:
       - git: sitej
