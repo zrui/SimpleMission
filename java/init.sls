@@ -1,8 +1,12 @@
-sudo add-apt-repository ppa:webupd8team/java -y
+install_java:
+  pkg.installed:
+    - name: oracle-java8-installer
+    - require:
+      - pkgrepo: java_repo
 
-sudo apt-get update
-sudo apt-get install oracle-java8-installer
 
-#Webupd8 ppa repository also providing a package to set environment variables, 
-#Install this package using following command.
-sudo apt-get install oracle-java8-set-default
+java_repo:
+  pkgrepo.managed:
+    - humanname: Oracle Java PPA
+    - name: ppa:webupd8team/java
+    
