@@ -21,7 +21,10 @@ sitej:
 runsite:
   cmd.run:
     - name: |
-        mvn compile exec:java -Dexec.mainClass="com.zeerui.App" &
+        mvn package
+        mv config/sitej.conf /etc/init/sitej.conf
+        ln -s /etc/init/sitej.conf /etc/init.d/sitej
+        service sitej start
     - cwd: /root/Moova-j
     - require:
       - git: sitej
