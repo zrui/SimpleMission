@@ -1,7 +1,7 @@
 base:
   '*':
-##    - webserver
-##    - java
-##    - maven
-##    - sitej
+    - webserver
+    - java
+    - maven
+    - sitej
     - mongodb
